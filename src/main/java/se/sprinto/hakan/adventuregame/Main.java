@@ -11,10 +11,15 @@ import se.sprinto.hakan.adventuregame.view.UI;
 
 public class Main {
 
+    AppInfo appInfo = AppInfo.getInstance();
+
+    private static String version = appInfo.getProperties("version");
+    private static String author = appInfo.getProperties("author");
+
     public static void main(String[] args) {
         UI ui = new ScannerUI();
         ui.showMessage("Välkommen till Äventyrsspelet!");
-        ui.showMessage("Version 1.0 av Håkan Gleissman");
+        ui.showMessage("Version " + version + " av " + author);
         String name = ui.getInput("Ange ditt namn:");
         Player player = new Player(name, 100, 0, 10);
 
