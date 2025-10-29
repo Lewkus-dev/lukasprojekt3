@@ -1,6 +1,5 @@
 package se.sprinto.hakan.adventuregame.view;
 
-import se.sprinto.hakan.adventuregame.AppInfo;
 
 import java.util.Scanner;
 

@@ -6,20 +6,18 @@ import se.sprinto.hakan.adventuregame.model.Player;
 import se.sprinto.hakan.adventuregame.model.StartRoom;
 import se.sprinto.hakan.adventuregame.model.Statistics;
 import se.sprinto.hakan.adventuregame.service.StatisticsService;
+import se.sprinto.hakan.adventuregame.util.AppInfo;
 import se.sprinto.hakan.adventuregame.view.ScannerUI;
 import se.sprinto.hakan.adventuregame.view.UI;
 
 public class Main {
 
-    AppInfo appInfo = AppInfo.getInstance();
-
-    private static String version = appInfo.getProperties("version");
-    private static String author = appInfo.getProperties("author");
 
     public static void main(String[] args) {
+        AppInfo appInfo = AppInfo.getInstance();
         UI ui = new ScannerUI();
         ui.showMessage("Välkommen till Äventyrsspelet!");
-        ui.showMessage("Version " + version + " av " + author);
+        appInfo.showInfo(ui, appInfo);
         String name = ui.getInput("Ange ditt namn:");
         Player player = new Player(name, 100, 0, 10);
 

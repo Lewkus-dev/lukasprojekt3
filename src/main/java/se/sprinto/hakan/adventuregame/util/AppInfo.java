@@ -1,5 +1,7 @@
-package se.sprinto.hakan.adventuregame;
+package se.sprinto.hakan.adventuregame.util;
 
+
+import se.sprinto.hakan.adventuregame.view.UI;
 
 import java.io.FileReader;
 import java.io.IOException;
@@ -11,8 +13,9 @@ public class AppInfo {
 
     private AppInfo(){
         properties = new Properties();
-        try (FileReader reader = new FileReader("cinfig.properties")) {
+        try (FileReader reader = new FileReader("properties")) {
             properties.load(reader);
+            System.out.println();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -27,5 +30,10 @@ public class AppInfo {
 
     public String getProperties(String key){
         return properties.getProperty(key);
+    }
+
+
+    public void showInfo(UI ui, AppInfo appInfo){
+        ui.showMessage("Version " + appInfo.getProperties("version") + " av " + appInfo.getProperties("author") + ".");
     }
 }
