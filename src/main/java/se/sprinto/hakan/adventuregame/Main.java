@@ -6,12 +6,11 @@ import se.sprinto.hakan.adventuregame.model.Player;
 import se.sprinto.hakan.adventuregame.model.StartRoom;
 import se.sprinto.hakan.adventuregame.model.Statistics;
 import se.sprinto.hakan.adventuregame.service.StatisticsService;
-import se.sprinto.hakan.adventuregame.util.AppInfo;
+import se.iths.lukas.adventuregame.util.AppInfo;
 import se.sprinto.hakan.adventuregame.view.ScannerUI;
 import se.sprinto.hakan.adventuregame.view.UI;
 
 public class Main {
-
 
     public static void main(String[] args) {
         AppInfo appInfo = AppInfo.getInstance();
@@ -19,11 +18,24 @@ public class Main {
         ui.showMessage("Välkommen till Äventyrsspelet!");
         appInfo.showInfo(ui, appInfo);
         String name = ui.getInput("Ange ditt namn:");
-        Player player = new Player(name, 100, 0, 10);
+
+        Player player = new Player.Builder()
+                .setName(name)
+                .setHealth(100)
+                .setScore(0)
+                .setStrength(100)
+                .build();
+
+        if(player != null){
+            System.out.println("We have a player!");
+        } else {
+            System.out.println("No player found");
+        }
 
         new StartRoom().enterRoom(player, ui);
 
         StatisticsDao dao = new FileStatisticsDao();
+        assert player != null;
         dao.save(new Statistics(player.getName(), player.getScore()));
 
         StatisticsService service = new StatisticsService(dao);

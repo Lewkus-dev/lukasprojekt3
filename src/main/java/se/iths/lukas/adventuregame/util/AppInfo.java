@@ -1,4 +1,4 @@
-package se.sprinto.hakan.adventuregame.util;
+package se.iths.lukas.adventuregame.util;
 
 
 import se.sprinto.hakan.adventuregame.view.UI;

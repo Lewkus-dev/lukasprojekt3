@@ -1,7 +1,7 @@
 package se.sprinto.hakan.adventuregame.model;
 
 public abstract class AbstractCharacter {
-    private String name;
+    String name;
     private int health;
     private int score;
     private int strength;
